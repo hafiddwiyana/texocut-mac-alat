@@ -1,0 +1,11 @@
+name: halo-mac
+on: workflow_dispatch
+jobs:
+  halo:
+    runs-on: macos-14
+    steps:
+      - run: sw_vers
+      - run: uname -m
+      - run: sysctl -n machdep.cpu.brand_string
+      - run: df -h /
+      - run: node --version || echo "node tidak ada"

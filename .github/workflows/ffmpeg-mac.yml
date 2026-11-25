@@ -1,0 +1,38 @@
+name: ffmpeg-mac
+on:
+  workflow_dispatch:
+  push:
+    paths: ['ffmpeg/**', '.github/workflows/ffmpeg-mac.yml']
+permissions:
+  contents: write
+concurrency: ffmpeg-mac
+jobs:
+  rakit:
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - name: Alat bantu rakit
+        run: |
+          mkdir -p "$HOME/log"
+          { sw_vers; xcodebuild -version; clang --version; } 2>&1 | tee "$HOME/log/mesin.txt"
+          brew install --quiet meson ninja autoconf automake libtool pkgconf gnu-tar
+      - name: Rakit ffmpeg
+        run: set -o pipefail; bash ffmpeg/rakit.sh "$HOME/rakit" > "$HOME/log/rakit.txt" 2>&1 || { tail -120 "$HOME/log/rakit.txt"; exit 1; }
+      - name: Tes ffmpeg
+        run: set -o pipefail; TES_FOTO="$HOME/log" bash ffmpeg/tes.sh "$HOME/rakit/hasil" 2>&1 | tee "$HOME/log/tes.txt"
+      - name: Simpan log ke cabang log-ffmpeg
+        if: always()
+        run: |
+          tail -400 "$HOME/log/rakit.txt" > "$HOME/log/rakit-akhir.txt" 2>/dev/null || true; rm -f "$HOME/log/rakit.txt"
+          git checkout --orphan log-ffmpeg && git rm -rfq --cached . && cp "$HOME/log"/* . 2>/dev/null
+          git add -f -- *.txt $(ls *.png 2>/dev/null)
+          git -c user.name=bot -c user.email=bot@users.noreply.github.com commit -qm "log ${{ github.run_number }}" && git push -qf origin log-ffmpeg
+      - name: Terbitkan Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd "$HOME/rakit" && tar -czf ffmpeg-mac-arm64.tar.gz -C hasil . && shasum -a 256 *.tar.gz | tee sha256.txt
+          gh release create "ffmpeg-mac-${{ github.run_number }}" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "ffmpeg mac arm64 #${{ github.run_number }}" \
+            --notes "FFmpeg (GPLv3) untuk macOS Apple Silicon. Kode sumber lengkap: sumber-ffmpeg-mac.tar.gz; resep: folder ffmpeg/." \
+            ffmpeg-mac-arm64.tar.gz sumber-ffmpeg-mac.tar.gz sha256.txt

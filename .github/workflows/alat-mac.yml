@@ -1,0 +1,38 @@
+name: alat-mac
+on:
+  workflow_dispatch:
+  push:
+    paths: ['alat/**', '.github/workflows/alat-mac.yml']
+permissions:
+  contents: write
+concurrency: alat-mac
+jobs:
+  rakit:
+    runs-on: macos-15
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - name: Rakit whisper
+        run: |
+          set -o pipefail; mkdir -p "$HOME/log"
+          bash alat/rakit-whisper.sh "$HOME/rakit-w" > "$HOME/log/whisper.txt" 2>&1 || { tail -80 "$HOME/log/whisper.txt"; exit 1; }
+      - name: Ambil sherpa + llama resmi
+        run: set -o pipefail; bash alat/ambil-resmi.sh "$HOME/rakit-r" 2>&1 | tee "$HOME/log/resmi.txt"
+      - name: Tes
+        run: set -o pipefail; bash alat/tes.sh "$HOME/rakit-w/hasil" "$HOME/rakit-w/jfk.wav" "$HOME/rakit-r/hasil" "$HOME/model" 2>&1 | tee "$HOME/log/tes.txt"
+      - name: Simpan log ke cabang log-alat
+        if: always()
+        run: |
+          tail -200 "$HOME/log/whisper.txt" > "$HOME/log/whisper-akhir.txt" 2>/dev/null || true; rm -f "$HOME/log/whisper.txt"
+          git checkout --orphan log-alat && git rm -rfq --cached . && cp "$HOME/log"/* . 2>/dev/null
+          git add -f -- *.txt
+          git -c user.name=bot -c user.email=bot@users.noreply.github.com commit -qm "log ${{ github.run_number }}" && git push -qf origin log-alat
+      - name: Terbitkan Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          cd "$HOME" && tar -czf whisper-mac-arm64.tar.gz -C rakit-w/hasil . && tar -czf ctc-mac-arm64.tar.gz -C rakit-r/hasil/ctc . && tar -czf llama-mac-arm64.tar.gz -C rakit-r/hasil llama-b12532
+          shasum -a 256 *-mac-arm64.tar.gz | tee sha256.txt
+          gh release create "alat-mac-${{ github.run_number }}" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "alat mac arm64 #${{ github.run_number }}" \
+            --notes "whisper.cpp b5454 (MIT, rakitan sendiri), sherpa-onnx v2.0.3 (Apache-2.0, resmi), llama.cpp b12532 (MIT, resmi), macOS Apple Silicon." \
+            whisper-mac-arm64.tar.gz ctc-mac-arm64.tar.gz llama-mac-arm64.tar.gz sha256.txt

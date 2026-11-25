@@ -1,0 +1,9 @@
+fribidi https://github.com/fribidi/fribidi.git d2f3e1f4946e7cef9789e1c3ebdb4a60d4314c7f
+libunibreak https://github.com/adah1972/libunibreak.git f8172fe771ef620112247cadfb876aecaa4f769e
+freetype https://gitlab.freedesktop.org/freetype/freetype.git 4ba7c3d82ab8b3cc80b869337d2c2b1913c5e415
+harfbuzz https://github.com/harfbuzz/harfbuzz.git 75d8ac5d2313842550174eaab0cbaf653c8f2f77
+libass https://github.com/libass/libass.git f61db567e6593df3470e91594bcd4ad2d0473aff
+x264 https://github.com/mirror/x264.git 0480cb05fa188d37ae87e8f4fd8f1aea3711f7ee
+vidstab https://github.com/georgmartius/vid.stab.git e2445c4081658318223762a696eb1c645c2d7168
+dav1d https://code.videolan.org/videolan/dav1d.git b8b2d726b4b78a2fb174cb45baff441b5969672c
+ffmpeg https://github.com/FFmpeg/FFmpeg.git d838f9f9aeb0e09b4d068e2af20a46a12640696f

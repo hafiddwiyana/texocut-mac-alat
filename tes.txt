@@ -1,0 +1,63 @@
+ffmpeg version d838f9f-texocut-mac Copyright (c) 2000-2026 the FFmpeg developers
+built with Apple clang version 17.0.0 (clang-1700.0.13.5)
+configuration: --prefix=/Users/runner/rakit/ffmpeg --pkg-config-flags=--static --arch=arm64 --cc=clang --extra-cflags='-I/Users/runner/rakit/pasang/include -mmacosx-version-min=13.3' --extra-ldflags='-L/Users/runner/rakit/pasang/lib -mmacosx-version-min=13.3' --extra-libs=-lc++ --extra-version=texocut-mac --enable-gpl --enable-version3 --enable-static --disable-shared --disable-autodetect --disable-debug --disable-doc --disable-ffplay --disable-network --enable-videotoolbox --enable-zlib --enable-iconv --enable-libx264 --enable-libass --enable-libfreetype --enable-libfribidi --enable-libharfbuzz --enable-libvidstab --enable-libdav1d
+OK    ffmpeg arm64
+      minos 13.3, 26 MB
+OK    ffmpeg hanya memakai library bawaan macOS (11 buah)
+OK    ffmpeg tanda tangan ad-hoc sah
+OK    ffprobe arm64
+      minos 13.3, 26 MB
+OK    ffprobe hanya memakai library bawaan macOS (11 buah)
+OK    ffprobe tanda tangan ad-hoc sah
+OK    81 filter engine lengkap
+OK    encoder libx264
+OK    encoder h264_videotoolbox
+OK    encoder aac
+OK    encoder pcm_s16le
+OK    encoder pcm_f32le
+OK    encoder png
+OK    encoder rawvideo
+OK    decoder h264
+OK    decoder hevc
+OK    decoder libdav1d
+OK    decoder vp9
+OK    decoder mjpeg
+OK    decoder png
+OK    decoder webp
+OK    decoder aac
+OK    decoder mp3float
+OK    decoder opus
+OK    decoder flac
+OK    decoder pcm_s16le
+OK    decoder pcm_s24le
+OK    decoder prores
+OK    encode x264+aac
+      durasi a.mp4 = 3.000000
+OK    durasi 3 s
+OK    filter lut3d
+OK    filter bilateral
+OK    filter perspective
+OK    filter eq
+OK    filter cas
+OK    filter gblur
+OK    filter unsharp
+OK    filter exposure
+OK    filter geq
+OK    filter zoompan
+OK    filter putar-potong
+OK    filter afftdn
+OK    filter loudnorm
+OK    filter deesser
+OK    filter agate
+OK    filter ebur128
+OK    vidstab deteksi
+OK    vidstab terapkan
+OK    filter arnndn
+OK    caption (ass)
+OK    tulisan caption benar-benar tergambar (terang 210)
+INFO  VideoToolbox encode JALAN di runner ini
+INFO  decode videotoolbox jalan IOServiceMatchingfailed for: AppleM2ScalerParavirtDriver
+INFO  x264 1080x1920 10 dtk selesai dalam 5.4 dtk
+INFO  vidstabdetect 1080x1920 10 dtk selesai dalam 4.0 dtk (tanpa OpenMP)
+
+SEMUA LULUS

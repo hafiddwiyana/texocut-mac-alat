@@ -9,7 +9,6 @@ agate
 alimiter
 alphaextract
 amix
-anlmdn
 anull
 anullsrc
 apad

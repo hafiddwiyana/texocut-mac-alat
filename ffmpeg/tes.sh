@@ -48,7 +48,6 @@ a loudnorm loudnorm=I=-16
 a deesser deesser
 a agate agate
 a ebur128 ebur128
-a anlmdn anlmdn
 cek "vidstab deteksi" "$FF" "${q[@]}" -i a.mp4 -vf vidstabdetect=result=trf.txt -f null -
 cek "vidstab terapkan" "$FF" "${q[@]}" -i a.mp4 -vf vidstabtransform=input=trf.txt -an -c:v libx264 s.mp4
 curl -fsSL -o lq.rnnn https://raw.githubusercontent.com/GregorR/rnnoise-models/master/leavened-quisling-2018-08-31/lq.rnnn
@@ -63,5 +62,8 @@ if "$FF" "${q[@]}" -hwaccel videotoolbox -i a.mp4 -an -f null - >log.txt 2>&1; t
 S=$(python3 -c 'import time;print(time.time())')
 "$FF" "${q[@]}" -f lavfi -i testsrc2=s=1080x1920:r=30:d=10 -c:v libx264 -preset fast -crf 18 -pix_fmt yuv420p sp.mp4
 python3 -c "import time;print('INFO  x264 1080x1920 10 dtk selesai dalam %.1f dtk'%(time.time()-$S))"
+S=$(python3 -c 'import time;print(time.time())')
+"$FF" "${q[@]}" -i sp.mp4 -vf vidstabdetect=shakiness=5:result=t2.txt -f null -
+python3 -c "import time;print('INFO  vidstabdetect 1080x1920 10 dtk selesai dalam %.1f dtk (tanpa OpenMP)'%(time.time()-$S))"
 echo; [ $G = 0 ] && echo "SEMUA LULUS" || echo "$G GAGAL"
 [ $G = 0 ]

@@ -1,0 +1,19 @@
+sherpa.tar.bz2: OK
+llama.tar.gz: OK
+-rwxr-xr-x  1 runner  staff  2161424 Nov 22 11:54 s/bin/sherpa-onnx-offline
+
+l:
+total 0
+drwxr-xr-x   3 runner  staff    96 Nov 25 07:20 .
+drwxr-xr-x   6 runner  staff   192 Nov 25 07:20 ..
+drwxr-xr-x  63 runner  staff  2016 Nov 19 04:30 llama-b12532
+
+s/lib:
+total 64936
+drwxr-xr-x  5 runner  staff       160 Nov 22 11:54 .
+drwxr-xr-x  5 runner  staff       160 Nov 25 07:20 ..
+-rw-r--r--  1 runner  staff  28775120 Nov 22 11:54 libonnxruntime.dylib
+-rwxr-xr-x  1 runner  staff   4283664 Nov 22 11:54 libsherpa-onnx-c-api.dylib
+-rwxr-xr-x  1 runner  staff    183760 Nov 22 11:54 libsherpa-onnx-cxx-api.dylib
+ 34M	/Users/runner/rakit-r/hasil/ctc
+ 41M	/Users/runner/rakit-r/hasil/llama-b12532

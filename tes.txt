@@ -1,0 +1,43 @@
+OK    whisper-cli tanpa Homebrew; minos 13.3; rpath: -
+OK    whisper-server tanpa Homebrew; minos 13.3; rpath: -
+OK    whisper-vad-speech-segments tanpa Homebrew; minos 13.3; rpath: -
+OK    sherpa-onnx-offline tanpa Homebrew; minos 11.0; rpath: @loader_path @loader_path/../lib @loader_path/../../../sherpa_onnx/lib 
+OK    libonnxruntime.dylib tanpa Homebrew; minos 11.0; rpath: @loader_path 
+OK    libsherpa-onnx-c-api.dylib tanpa Homebrew; minos 11.0; rpath: @loader_path 
+OK    libsherpa-onnx-cxx-api.dylib tanpa Homebrew; minos 11.0; rpath: @loader_path 
+OK    llama-server tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libggml-base.1.0.0.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libggml-blas.1.0.0.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libggml-cpu.1.0.0.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libggml-metal.1.0.0.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libggml-rpc.1.0.0.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libggml.1.0.0.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libllama-batched-bench-impl.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libllama-bench-impl.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libllama-cli-impl.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libllama-common.1.0.0.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libllama-completion-impl.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libllama-fit-params-impl.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libllama-perplexity-impl.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libllama-quantize-impl.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libllama-server-impl.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libllama.1.0.0.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+OK    libmtmd.1.0.0.dylib tanpa Homebrew; minos 13.3; rpath: @loader_path 
+/Users/runner/model/silero.bin: OK
+/Users/runner/model/turbo.bin: OK
+/Users/runner/model/ctc.tar.bz2: OK
+      VAD mac     : 29.00-221.00 330.00-377.00 400.00-435.00 538.00-765.00 816.00-1059.00 
+      VAD windows : 29.00-221.00 330.00-377.00 400.00-435.00 538.00-765.00 816.00-1059.00 
+OK    VAD = Windows (beda <= 0,05 dtk)
+      whisper CPU: 18.1 dtk |  [00:00:00.000 --> 00:00:10.400]   And so, my fellow Americans, ask not what your country can do for you, ask what you can do for your country. 
+OK    whisper CPU teks = Windows
+      whisper Metal: 17.5 dtk |  [00:00:00.000 --> 00:00:10.400]   And so, my fellow Americans, ask not what your country can do for you, ask what you can do for your country. 
+OK    whisper Metal teks = Windows
+e7c4e54ee4c4c47829cc6667d5d00ed8ea7bef1dcfeef0fce766f77752a2726c  /Users/runner/model/ctc/model.int8.onnx
+      telinga kedua: 3.4 dtk | "timestamps": [0.14, 0.28, 0.36, 0.46, 0.50, 0.54, 0.58, 0.62, 0.64, 0.66, 0.70, 0.72
+OK    telinga kedua teks = Windows
+version: 1.0.0-dev (build 12532, commit 08c252e22)
+built with AppleClang 21.0.0.21000101 for Darwin arm64
+OK    llama-server menyala
+
+SEMUA LULUS
